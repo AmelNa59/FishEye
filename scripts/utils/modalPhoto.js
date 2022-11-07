@@ -1,14 +1,20 @@
 function openModal() {
-  document.getElementById("myModal").style.display = "block";
+  document.getElementById("lightbox").style.display = "block";
 
-  }
+}
 
-// Close the Modal
+
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
+  document.getElementById("lightbox").style.display = "none";
   document.getElementById("contact_modal").style.display = "none";
   }
 
-  
+function prevMedia() {
+    currentIndexMedia -= 1;
+    displayLightbox(mymedia[currentIndexMedia]);
+  }
 
- 
+function nextMedia() {
+    currentIndexMedia += 1;
+    displayLightbox(mymedia[currentIndexMedia]);
+  }

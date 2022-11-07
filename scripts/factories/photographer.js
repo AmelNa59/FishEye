@@ -39,8 +39,6 @@ export function photographerFactory(data) {
         return (a);
     }
 
-   
-
     function getPhotographerCardDOM() {
         const p = document.querySelector(".photograph-header");
         const i = document.createElement( 'info' );
@@ -48,7 +46,7 @@ export function photographerFactory(data) {
 
 
         const img = document.createElement('img');
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
 
         const h2 = document.createElement('h2');
         h2.textContent = name;
@@ -60,12 +58,10 @@ export function photographerFactory(data) {
         tag.textContent = data.tagline;
 
         const butt = document.querySelector("button");
-        const modal = document.getElementById("contact_modal");
-
        
         p.appendChild(i);
-      p.appendChild(cont);
-      cont.appendChild(butt);
+        p.appendChild(cont);
+        cont.appendChild(butt);
         i.appendChild(h2);
         i.appendChild(count);
         i.appendChild(tag);
@@ -79,3 +75,5 @@ export function photographerFactory(data) {
    
 }
 
+
+  

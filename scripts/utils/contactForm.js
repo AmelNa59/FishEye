@@ -19,7 +19,6 @@ var email = document.getElementById('email');
 
 var message = document.getElementById('msg');
 
-
 var preVaL = document.getElementById('prenomval');
 
 var nomVaL = document.getElementById('nomval');
@@ -68,7 +67,7 @@ if (results.every(e => e)) {
   masquerformulaire();
 
 }
-console.log(results);
+
 }
 
 function masquerformulaire() {

@@ -4,64 +4,68 @@ import {photographerFactory} from "../factories/photographer.js"
 
 import {mediaFactory} from "../factories/media.js"
 
-
 const queryString_url_id =window.location.search;
-console.log(queryString_url_id);
 
 const urlSearchParams = new URLSearchParams(queryString_url_id);
-console.log(urlSearchParams);
 
 const id = urlSearchParams.get("id");
-console.log(id);
-
 
 async function displayData(photographer) {
    const photographerSection = document.querySelector(".photograph-header");
     const photographerModel = photographerFactory(photographer);
-    const photographerCardDOM = photographerModel.getPhotographerCardDOM();//renvoie un element du DOM
-    console.log(photographerCardDOM);
-  photographerSection.appendChild(photographerCardDOM );
-//on ajoute lelement à la section
+    const photographerCardDOM = photographerModel.getPhotographerCardDOM();
 
 };
+
 async function displayMedia(gallery) {
 
-const mediaSection = document.querySelector(".photograph-media");
-    const mediaModel = mediaFactory(gallery);
-    const mediaCardDOM = mediaModel.getMediaCardDOM();//renvoie un element du DOM
-    console.log(mediaCardDOM);
-    mediaSection.appendChild(mediaCardDOM);//on ajoute lelement à la section
-    gallery.sort();
-    displayMedia(gallery);
-}
+    const mediaSection = document.querySelector(".photograph-media");
+        const mediaModel = mediaFactory(gallery);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaCardDOM.addEventListener("click",displayModal);
+      //mediaCardDOM.appendChild(mediaSection);
+       // gallery.sort();
+    }
+    async function displayLightbox(media) {
+        const lightbox = document.getElementById("lightbox");
+        const content = lightbox.querySelector(".dialog-content");
+        content.innerHTML= "";
+        const $image = document.createElement("img");
+        $image.setAttribute("src",`assets/photos/${media.image}`);
+        content.appendChild($image);
+        
+        }
 
+let mymedia;
+let currentIndexMedia;
 
 export async function init() {
     // Récupère les datas des photographes
-    const { photographers, media } = await getPhotographers();// je recupere les donnees et je les attends , une fois que je les ai j'appel display data
-       //recupere un photographe depuis son Id
+    const { photographers, media } = await getPhotographers();
+    mymedia = media;
     const photographer = photographers.find(p =>p.id == id);
     //recupere tous les médias d'un photographe depuis son Id
     const gallery = media.filter(function(elmt){
         return (elmt.photographerId == id);
     })
 
-console.log(photographer);
-console.log(gallery);
-
 //Boucle For pour afficher toutes les donnees de la galerie d'un photographe
 for (const item of gallery){
-    console.log(item);
     displayMedia(item);
-  
 }
-
 displayData(photographer);
-
 };
 
+async function displayModal(event){
 
+console.log("displayModal",event.target);
+    const parent = event.target.closest('container');
+    const mediaID = parent.getAttribute('data-id');
 
+    const currentIndexMedia = mymedia.findIndex(m => m.id == mediaID);
+    const mediaSelected = mymedia[currentIndexMedia];
+    displayLightbox(mediaSelected);
+}
 
 init();
 

@@ -23,12 +23,13 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
 
-      <label for="galery-select">Trier par</label>
-      <select name="galery-select" id="select" onchange="showSelection();">
-        <option value="1">Popularité</option>
-        <option value="2">Date</option>
-        <option value="3">Titre</option>
+      <label for="galery-select" id="filter_container">Trier par</label>
+      <select name="galery-select" id="filter_elements" onchange="showSelection();">
+        <option value="1" class="filter_element" id="filter_pop">Popularité</option>
+        <option value="2" class="filter_element" id="filter_date">Date</option>
+        <option value="3" class="filter_element" id="filter_titre">Titre</option>
       </select>
+
 
 
       </style>
@@ -80,9 +81,23 @@
     <div class="photograph-media">
 
 <!-- The Modal/Lightbox -->
-<div id="myModal" class="modalPhoto">
-  <span class="closeModalPhoto" onclick="closeModal()">&times;</span>
+<dialog id="lightbox" class="light">
 
-</div>
+  <div class="dialog-content">
+  </div>
+
+  <div id="prev" onclick="prevMedia">
+    <i class="fas fa-arrow-circle-left"></i>
+  </div>
+
+  <button id="closeLightbox" aria-label="Fermer" >
+    <i class="fas fa-times" onclick="closeModal()"></i>
+  </button>
+
+  <div id="next" onclick="nextMedia">
+    <i class="fas fa-arrow-circle-right"></i>
+  </div>
+
+</dialog>
   </body>
 </html>
