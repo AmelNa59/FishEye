@@ -1,20 +1,19 @@
-function openModal() {
-  document.getElementById("lightbox").style.display = "block";
-
+export function openModal() {
+    document.getElementById("lightbox").style.display = "block";
 }
 
-
-function closeModal() {
-  document.getElementById("lightbox").style.display = "none";
-  document.getElementById("contact_modal").style.display = "none";
+export function closeModal() {
+    document.getElementById("lightbox").style.display = "none";
+    document.getElementById("contact_modal").style.display = "none";
   }
 
-function prevMedia() {
+export function prevMedia() {
     currentIndexMedia -= 1;
     displayLightbox(mymedia[currentIndexMedia]);
-  }
+}
 
-function nextMedia() {
+export function nextMedia() {
+    console.log("next Media");
     currentIndexMedia += 1;
     displayLightbox(mymedia[currentIndexMedia]);
   }
