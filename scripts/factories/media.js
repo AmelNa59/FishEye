@@ -1,3 +1,5 @@
+import { openModal } from "../utils/modalPhoto.js";
+
 export function mediaFactory(data) {
 
   const { photographerId, image, video, id } = data;
@@ -17,7 +19,8 @@ export function mediaFactory(data) {
     if (data.image) {
       media = document.createElement('img');
       media.setAttribute("src", picture);
-      media.setAttribute("onclick", "openModal()");
+      // media.setAttribute("onclick", "openModal()");   // C'est mieux d'utiliser addEventListener
+      media.addEventListener('click', openModal); // Implémenté ici
       media.setAttribute("id", "meddia");
 
       //VIDEOS
@@ -42,20 +45,20 @@ export function mediaFactory(data) {
     const tag = document.createElement('tag');
     tag.textContent = data.tagline;
 
-    const gal = document.createElement('galery');
+    const gal = document.createElement('galery'); // TODO Je ne connais de balise HTML galery, tu ne peux pas en inventer
 
     const f = document.createElement('footer');
 
     const i = document.createElement('i');
     i.classList.add("fas", "fa-heart");
 
-    const lik = document.createElement('likes');
+    const lik = document.createElement('likes'); // Idem <likes> n'existe pas
     lik.textContent = data.likes;
 
     const tle = document.createElement('h3');
     tle.textContent = data.title;
 
-    const pr = document.createElement('price');
+    const pr = document.createElement('price'); // Idem <price> n'existe pas
     pr.textContent = data.price;
 
     pm.appendChild(a);
