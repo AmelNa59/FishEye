@@ -7,7 +7,7 @@
        
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/modalPhoto.js"></script>
+    
 
     <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
       </style>
     </main>
 
-    <div id="contact_modal">
+    <div id="contact_modal" >
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
@@ -75,9 +75,7 @@
 				</form>
 			</div>
 		</div>
-    
-
-
+ 
     <div class="photograph-media">
 
 <!-- The Modal/Lightbox -->
@@ -86,17 +84,20 @@
   <div class="dialog-content">
   </div>
 
-  <div id="prev" onclick="prevMedia">
+  <button id="prev" aria-label="Precedent" onclick="() => prevMedia()">
     <i class="fas fa-arrow-circle-left"></i>
-  </div>
-
-  <button id="closeLightbox" aria-label="Fermer" >
-    <i class="fas fa-times" onclick="closeModal()"></i>
   </button>
 
-  <div id="next" onclick="nextMedia">
-    <i class="fas fa-arrow-circle-right"></i>
-  </div>
+  <button id="closeLightbox" aria-label="Fermer" >
+    <i class="fas fa-arrow-circle-right"  onclick="() => closeModal()"></i>
+  </button>
+
+  <button id="next" aria-label="Suivant">
+    <i class="fas fa-times" ></i>
+  </button>
+    <!-- TODO  Ici le HTML ne voit pas la fonction nextMedia car cette fonction est défini dans un module -->
+    <!-- Il faut donc que tu fasses le lien en JS dans ton code et non pas ici en HTML -->
+
 
 </dialog>
   </body>

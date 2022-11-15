@@ -1,3 +1,5 @@
+import { openModal } from "../utils/modalPhoto.js";
+
 export function mediaFactory(data) {
 
   const { photographerId, image, video, id } = data;
@@ -17,7 +19,7 @@ export function mediaFactory(data) {
     if (data.image) {
       media = document.createElement('img');
       media.setAttribute("src", picture);
-      media.setAttribute("onclick", "openModal()");
+      media.addEventListener('click', openModal); // Implémenté ici
       media.setAttribute("id", "meddia");
 
       //VIDEOS
