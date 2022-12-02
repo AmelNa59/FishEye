@@ -20,8 +20,10 @@ h1 {
 }
 
 .logo {
-    height: 50px;
+    height: 30px;
     margin-left: 100px;
+    object-fit: contain;
+
 }
 
 .photographer_section {
@@ -46,6 +48,7 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+
     
 }
 
@@ -178,6 +181,12 @@ justify-content: space-around;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    border-radius:50%;
+ }
+
+ #meddia{
+
+    border-radius: 1%;
  }
   
  .prev-image {
@@ -185,7 +194,8 @@ justify-content: space-around;
  }
   
  .fa-arrow-circle-left,
- .fa-arrow-circle-right {
+ .fa-arrow-circle-right,
+ .fa-window-close {
     font-size: 30px;
  }
   
@@ -252,22 +262,70 @@ justify-content: space-around;
     height:50%;
     background-color: rgba(0,0,0.9);
     z-index:10;
+    display: flex;
   
   }
 
+  #closeLightbox{
+    background-color: transparent;
+    border-color: transparent;
+    color:rgb(144, 28, 28);
+    position: absolute;
+    margin: auto;
+    top:0;
+    right:10px;
+    height:40px;
+    width:20px;
+
+  }
+  #prev{
+    background-color: transparent;
+    border-color: transparent;
+    color:rgb(144, 28, 28);
+    position: absolute;
+    margin: auto;
+    top: 45%;
+    left:0;
+
+    }
+    
+    #next{
+    background-color: transparent;
+    border-color: transparent;
+    color:rgb(144, 28, 28);
+    position: absolute;
+    margin: auto;
+    top: 45%;
+    left:95%;
+        }
 
   img{
-    width:100%;
+    width:450px;
     object-fit: cover;
+    border-radius: 1%;
+    height:300px;
+    text-align:center;
+margin:auto;
+display:flex;
+  }
+
+  video{
+    width:450px;
+    object-fit: cover;
+    border-radius: 1%;
+    height:300px;
+    text-align:center;
+    margin:auto;
+    display:flex;
+
   }
 .dialog-content {
     margin: auto;
-    display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     gap:30px;
     width: 500px;
     max-height: 350px;
+    justify-content:center;
 
 }
 
@@ -316,4 +374,18 @@ justify-content: space-around;
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*Encart*/
+
+.encart{
+
+    height: 30px;
+    width:200px;
+    border-radius:10px 10px 0 0;
+   background-color:rgb(219, 136, 118);
+   position:fixed;
+   bottom:0;
+   right:100px;
+   
 }

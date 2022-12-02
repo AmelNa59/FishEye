@@ -1,104 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-       
-    <script src="/scripts/pages/photographer.js" type="module"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    
 
-    <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 
-      <label for="galery-select" id="filter_container">Trier par</label>
-      <select name="galery-select" id="filter_elements" onchange="showSelection();">
-        <option value="1" class="filter_element" id="filter_pop">Popularité</option>
-        <option value="2" class="filter_element" id="filter_date">Date</option>
-        <option value="3" class="filter_element" id="filter_titre">Titre</option>
-      </select>
+  <script src="/scripts/pages/photographer.js" type="module"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
 
 
+  <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 
-      </style>
-    </main>
+  <title>Fisheye - photographe </title>
+</head>
 
-    <div id="contact_modal" >
-			<div class="modal">
-				<header>
+<body>
+  <header>
+    <img src="assets/images/logo.png" class="logo" />
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <button class="contact_button">Contactez-moi</button>
+    </div>
+
+    <!--TRIER-->
+
+    <label for="galery-select" id="filter_container">Trier par</label>
+    <select name="medias" class="photographer_elements" id="selectOptions">
+      <option selected="selected" value="pop" id="filter_pop">Popularité</option>
+      <option value="date" id="filter_date">Date</option>
+      <option value="title" id="filter_titre">Titre</option>
+    </select>
+
+
+
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" id="img2" />
-     
+
         </header>
 
-				<form
-        method="get">
-					<div class="label">
-            <div
-            class="formData" id="prenomval">
-						<label id="prenom">Prénom</label>
-						<input />
+        <form method="get">
+          <div class="label">
+            <div class="formData" id="prenomval">
+              <label id="prenom">Prénom</label>
+              <input />
             </div>
 
-            <div
-            class="formData" id="nomval">
-            <label id="nom">Nom</label>
-						<input />
-            </div>
-            
-            <div
-            class="formData" id="emailval">
-            <label for="email">Email </label>
-            <input type="email" name="email" id="email" required>
+            <div class="formData" id="nomval">
+              <label id="nom">Nom</label>
+              <input />
             </div>
 
-            <div
-            class="formData" id="msgval">
-            <label for="msg">Votre message</label>
-            <textarea id="msg" name="user_message"></textarea>
+            <div class="formData" id="emailval">
+              <label for="email">Email </label>
+              <input type="email" name="email" id="email" required>
             </div>
-					</div>
+
+            <div class="formData" id="msgval">
+              <label for="msg">Votre message</label>
+              <textarea id="msg" name="user_message"></textarea>
+            </div>
+          </div>
 
           <button class="contact_button" type="submit" id="send" value="send">Envoyer</button>
-				</form>
-			</div>
-		</div>
- 
-    <div class="photograph-media">
+        </form>
+      </div>
+    </div>
 
-<!-- The Modal/Lightbox -->
-<dialog id="lightbox" class="light">
 
-  <div class="dialog-content">
-  </div>
 
-  <button id="prev" aria-label="Precedent" onclick="() => prevMedia()">
-    <i class="fas fa-arrow-circle-left"></i>
-  </button>
+    <!-- The Modal/Lightbox -->
+    <dialog id="lightbox" class="light" aria-label="image-closeup-view">
 
-  <button id="closeLightbox" aria-label="Fermer" >
-    <i class="fas fa-arrow-circle-right"  onclick="() => closeModal()"></i>
-  </button>
+      <div class="dialog-content">
+      </div>
 
-  <button id="next" aria-label="Suivant">
-    <i class="fas fa-times" ></i>
-  </button>
+      <button id="prev" aria-label="Precedent">
+        <i class="fas fa-chevron-left fa-2x"></i>
+      </button>
+
+      <button id="next" aria-label="Suivant">
+        <i class="fas fa-chevron-right fa-2x"></i>
+      </button>
+
+
+      <button id="closeLightbox" aria-label="Fermer">
+        <i class="fas fa-times fa-2x"></i>
+      </button>
+    </dialog>
+    <div class="photograph-media"></div>
     <!-- TODO  Ici le HTML ne voit pas la fonction nextMedia car cette fonction est défini dans un module -->
     <!-- Il faut donc que tu fasses le lien en JS dans ton code et non pas ici en HTML -->
 
 
-</dialog>
-  </body>
+
+    </div>
+
+  </main>
+</body>
+
 </html>

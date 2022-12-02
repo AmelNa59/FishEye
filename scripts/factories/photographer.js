@@ -5,17 +5,16 @@ export function photographerFactory(data) {
     const { name, portrait, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
-    console.log(picture);
+
 
     function getUserCardDOM() {// on ajoute les datas que l'on veut
         const a = document.createElement('a');
         a.setAttribute("href", "photographer.html" + "?id=" + id);
 
-
         const article = document.createElement('article');
         const img = document.createElement('img');
         img.setAttribute("src", picture)
-        
+
         const h2 = document.createElement('h2');
         h2.textContent = name;
 
@@ -26,8 +25,8 @@ export function photographerFactory(data) {
         const tag = document.createElement('tag');
         tag.textContent = data.tagline;
         const p = document.createElement('p');
+        p.setAttribute("id", "priceDay");
         p.textContent = data.price + '€/jour';
-
 
         a.appendChild(article);
         article.appendChild(img);
@@ -36,13 +35,14 @@ export function photographerFactory(data) {
         article.appendChild(tag);
         article.appendChild(p);   //permet d'afficher
 
+
         return (a);
     }
 
     function getPhotographerCardDOM() {
         const p = document.querySelector(".photograph-header");
-        const i = document.createElement( 'info' );
-        const cont = document.createElement( 'contact' );
+        const i = document.createElement('info');
+        const cont = document.createElement('contact');
 
 
         const img = document.createElement('img');
@@ -58,22 +58,22 @@ export function photographerFactory(data) {
         tag.textContent = data.tagline;
 
         const butt = document.querySelector("button");
-       
+
         p.appendChild(i);
         p.appendChild(cont);
         cont.appendChild(butt);
         i.appendChild(h2);
         i.appendChild(count);
         i.appendChild(tag);
-
         p.appendChild(img);
+
+
 
         return (p);
 
     }
-    return { name,picture, getUserCardDOM, getPhotographerCardDOM}
-   
+    return { name, picture, getUserCardDOM, getPhotographerCardDOM }
+
 }
 
 
-  
