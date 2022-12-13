@@ -22,13 +22,14 @@ async function displayData(photographer) {
 };
 
 async function displayMedia(gallery) {
-
+    console.log(gallery);
     const mediaSection = document.querySelector(".photograph-media");
-    const mediaModel = mediaFactory(gallery);
-    const mediaCardDOM = mediaModel.getMediaCardDOM();
-    mediaCardDOM.addEventListener("click", displayModal);
-    //mediaSection.appendChild(mediaSection);
-
+    gallery.forEach(media => {
+        const mediaModel = mediaFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaCardDOM.addEventListener("click", displayModal);
+        mediaSection.appendChild(mediaCardDOM);
+    })
 }
 
 /**
@@ -59,7 +60,6 @@ async function displayLightbox(media) {
     const h3 = document.createElement("h3");
     h3.textContent = media.title;
     content.appendChild(h3);
-
 }
 
 /**
@@ -69,100 +69,26 @@ async function displayLightbox(media) {
  */
 function displayModal(event) {
 
-    const parent = event.target.closest('container');
+    const parent = event.target.closest('.mediaContainer');
     const mediaID = parent.getAttribute('data-id');
     currentIndexMedia = mymedia.findIndex(m => m.id == mediaID);
     const mediaSelected = mymedia[currentIndexMedia];
     displayLightbox(mediaSelected);
-
 }
 
 let mymedia;
 let currentIndexMedia;
 export async function init() {
+    console.log('init');
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
-    mymedia = media;
     const photographer = photographers.find(p => p.id == id);
     //recupere tous les médias d'un photographe depuis son Id
-    const gallery = media.filter(function (elmt) {
+    mymedia = media.filter(function (elmt) {
         return (elmt.photographerId == id);
     })
 
-    //TRIAGE PAR DATE
-
-    const sortDate = document.getElementById("filter_date");
-
-    function updateValueDate() {
-        document.querySelector(".photograph-media").innerHTML = "";
-
-        gallery.sort(function compare(a, b) {
-            if (a.date < b.date)
-                return -1;
-            if (a.date > b.date)
-                return 1;
-            return 0;
-
-        })
-        for (const item of gallery) {
-
-            displayMedia(item);
-
-        };
-
-    } console.log(gallery);
-
-
-    sortDate.addEventListener('click', updateValueDate);
-
-    //TRIAGE PAR TITLE
-    const sortTitle = document.getElementById('filter_titre');
-
-    function updateValueTitle() {
-        document.querySelector(".photograph-media").innerHTML = "";
-        gallery.sort(function (a, b) {
-            if (a.title < b.title)
-                return -1;
-            if (a.title > b.title)
-                return 1;
-
-            return 0;
-
-        });
-        for (const item of gallery) {
-            //TRIAGE PAR LIKES
-
-            displayMedia(item);
-
-        };
-
-
-    }
-    sortTitle.addEventListener("click", updateValueTitle);
-
-
-    //tri Popularité
-    function updateValueLikes() {
-        document.querySelector(".photograph-media").innerHTML = "";
-        gallery.sort(function compare(a, b) {
-
-            if (a.likes > b.likes)
-                return -1;
-            if (a.likes < b.likes)
-                return 1;
-            return 0;
-        });
-        for (const item of gallery) {
-
-            displayMedia(item);
-            displayLightbox(mymedia);
-        };
-    }
-
-    const sortLikes = document.getElementById('filter_pop');
-    sortLikes.addEventListener('click', updateValueLikes);
-
-
+   
     // NEXTMEDIA
     function nextMedia() {
         currentIndexMedia += 1;
@@ -174,10 +100,7 @@ export async function init() {
     rightArrow.addEventListener('click', nextMedia);
     rightArrow.setAttribute("aria-label", "Next image")
 
-    //nb de likes
-    let nbLikes = 0;
-    gallery.forEach(media => nbLikes += media.likes
-    );
+
 
 
     //CLOSEMODAL
@@ -198,10 +121,87 @@ export async function init() {
     leftArrow.setAttribute("aria-label", "Previous image")
 
     displayData(photographer);
-};
+    console.log(mymedia);
+    displayMedia(mymedia);
 
+    updateLikes();
+};
+ //TRIAGE PAR DATE
+
+ const sortDate = document.getElementById("filter_date");
+
+ function updateValueDate() {
+     document.querySelector(".photograph-media").innerHTML = "";
+
+     mymedia.sort(function compare(a, b) {
+         if (a.date < b.date)
+             return -1;
+         if (a.date > b.date)
+             return 1;
+         return 0;
+
+     })
+
+     displayMedia(mymedia);
+
+ }
+
+
+ sortDate.addEventListener('click', updateValueDate);
+
+ //TRIAGE PAR TITLE
+ const sortTitle = document.getElementById('filter_titre');
+
+ function updateValueTitle() {
+     document.querySelector(".photograph-media").innerHTML = "";
+     mymedia.sort(function (a, b) {
+         if (a.title < b.title)
+             return -1;
+         if (a.title > b.title)
+             return 1;
+
+         return 0;
+
+     });
+     displayMedia(mymedia);
+
+ }
+ sortTitle.addEventListener("click", updateValueTitle);
+
+
+ //tri Popularité
+ function updateValueLikes() {
+     document.querySelector(".photograph-media").innerHTML = "";
+     mymedia.sort(function compare(a, b) {
+
+         if (a.likes > b.likes)
+             return -1;
+         if (a.likes < b.likes)
+             return 1;
+         return 0;
+     });
+     displayMedia(mymedia);
+ }
+
+ const sortLikes = document.getElementById('filter_pop');
+ sortLikes.addEventListener('click', updateValueLikes);
+
+function updateLikes(){
+    let nbLikes = 0;
+    mymedia.forEach(media => nbLikes += media.likes
+    );
+    console.log(nbLikes);
+
+    const encartLikes= document.querySelector('.encart > p');
+    const p = document.createElement('p');
+    //encartLikes.innerText=`nombre de likes ${nbLikes}`;
+ //   encartLikes.innerHTML="";
+encartLikes.appendChild(p);
+console.log(encartLikes)
+}
 
 init();
+
 
 //const selectTri = document.getElementsByClassName("photographer_elements")[0];
 

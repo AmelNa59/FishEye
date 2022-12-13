@@ -38,10 +38,9 @@ export function mediaFactory(data) {
     }
     //DOM
 
-    const pm = document.querySelector(".photograph-media");
-
-    const cont = document.createElement('container');
+    const cont = document.createElement('div');
     cont.setAttribute("data-id", id);
+    cont.classList.add("mediaContainer");
 
     const img = document.createElement('img');
     img.setAttribute("src", picture);
@@ -49,7 +48,7 @@ export function mediaFactory(data) {
     const tag = document.createElement('tag');
     tag.textContent = data.tagline;
 
-    const gal = document.createElement('galery');
+    const galery = document.createElement('div');
 
     const f = document.createElement('footer');
 
@@ -75,32 +74,27 @@ export function mediaFactory(data) {
     const enc = document.createElement("div");
 
     enc.setAttribute("class", "encart")
-    const ppp = document.createElement("p");
-    ppp.setAttribute("id", "accueil");
 
 
 
 
-    pm.appendChild(a);
-    pm.appendChild(cont);
-    pm.appendChild(enc);
 
+    cont.appendChild(a);
+   cont.appendChild(media);
+    cont.appendChild(enc);
 
-
-    a.appendChild(cont);
-    cont.appendChild(gal);
-    gal.appendChild(media);
+    // gal.appendChild(media);
 
 
     cont.appendChild(f);
     f.appendChild(h3);
     f.appendChild(numberLikes);
 
-    enc.appendChild(ppp);
+   
 
 
 
-    return (pm);
+    return (cont);
 
   }
 
