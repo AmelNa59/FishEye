@@ -24,20 +24,23 @@ export function photographerFactory(data) {
         count.textContent = data.city + ' , ' + data.country;
         const tag = document.createElement('tag');
         tag.textContent = data.tagline;
-        const p = document.createElement('p');
-        p.setAttribute("id", "priceDay");
-        p.textContent = data.price + '€/jour';
+        const priceDay = document.createElement('p');
+        priceDay.setAttribute("id", "priceDay");
+        priceDay.textContent = data.price + '€/jour';
+
+        const encartt = document.getElementsByClassName("encart");
 
         a.appendChild(article);
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(count);
         article.appendChild(tag);
-        article.appendChild(p);   //permet d'afficher
+        article.appendChild(priceDay);   //permet d'afficher
 
 
         return (a);
     }
+
 
     function getPhotographerCardDOM() {
         const p = document.querySelector(".photograph-header");

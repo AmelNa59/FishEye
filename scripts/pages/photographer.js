@@ -7,6 +7,7 @@ import { openModal } from "../utils/modalPhoto.js";
 
 
 
+
 const queryString_url_id = window.location.search;
 
 const urlSearchParams = new URLSearchParams(queryString_url_id);
@@ -166,6 +167,7 @@ export async function init() {
      displayMedia(mymedia);
 
  }
+ 
  sortTitle.addEventListener("click", updateValueTitle);
 
 
@@ -186,19 +188,18 @@ export async function init() {
  const sortLikes = document.getElementById('filter_pop');
  sortLikes.addEventListener('click', updateValueLikes);
 
-function updateLikes(){
+export function updateLikes(){
     let nbLikes = 0;
     mymedia.forEach(media => nbLikes += media.likes
     );
     console.log(nbLikes);
 
-    const encartLikes= document.querySelector('.encart > p');
-    const p = document.createElement('p');
-    //encartLikes.innerText=`nombre de likes ${nbLikes}`;
- //   encartLikes.innerHTML="";
-encartLikes.appendChild(p);
-console.log(encartLikes)
+// encartLikes.innerText=`nombre de likes ${nbLikes}`;
+//encartLikes.innerHTML="";
+//encartLikes.appendChild(pLIK);
+    //console.log(encartLikes)
 }
+
 
 init();
 

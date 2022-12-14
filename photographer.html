@@ -18,58 +18,62 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <img src="assets/images/logo.png" class="logo" alt=""/>
   </header>
   <main id="main">
+
     <div class="photograph-header">
-      <button class="contact_button">Contactez-moi</button>
+    <!-- 
+      <button class="contact_button" aria-label="Contact me">Contactez-moi</button>
+  -->
+      <div id="contact_modal"> 
+      <div class="modal">  
+        <header>
+        
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" id="img2" aria-label="Close Contact Form"/>
+
+        </header>
+
+        <form method="get" id="formC">
+          <div class="label">
+            <div class="formData" id="prenomval">
+              <label id="prenom" aria-label="First name(lablled by 3 )">Prénom</label>
+              <input />
+            </div>
+
+            <div class="formData" id="nomval">
+              <label id="nom" aria-label="Last name(lablled by 5 )">Nom</label>
+              <input />
+            </div>
+
+            <div class="formData" id="emailval">
+              <label for="email">Email </label>
+              <input type="email" name="email" id="email" required aria-label="Email (lablled by 7)">
+            </div>
+
+            <div class="formData" id="msgval">
+              <label for="msg" aria-label="Your message(labbled by 9">Votre message</label>
+              <textarea id="msg" name="user_message"></textarea>
+            </div>
+          </div>
+
+          <button class="contact_button" type="submit" id="send" value="send" aria-label="Send" onclick="">Envoyer</button>
+        </form>
+      </div>
+    </div>
     </div>
 
     <!--TRIER-->
 
     <label for="galery-select" id="filter_container">Trier par</label>
-    <select name="medias" class="photographer_elements" id="selectOptions">
+    <select name="medias" class="photographer_elements" id="selectOptions" aria-label="Ordered by(labbled by 8)">
       <option selected="selected" value="pop" id="filter_pop">Popularité</option>
       <option value="date" id="filter_date">Date</option>
       <option value="title" id="filter_titre">Titre</option>
     </select>
 
 
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" id="img2" />
-
-        </header>
-
-        <form method="get">
-          <div class="label">
-            <div class="formData" id="prenomval">
-              <label id="prenom">Prénom</label>
-              <input />
-            </div>
-
-            <div class="formData" id="nomval">
-              <label id="nom">Nom</label>
-              <input />
-            </div>
-
-            <div class="formData" id="emailval">
-              <label for="email">Email </label>
-              <input type="email" name="email" id="email" required>
-            </div>
-
-            <div class="formData" id="msgval">
-              <label for="msg">Votre message</label>
-              <textarea id="msg" name="user_message"></textarea>
-            </div>
-          </div>
-
-          <button class="contact_button" type="submit" id="send" value="send">Envoyer</button>
-        </form>
-      </div>
-    </div>
 
 
 
