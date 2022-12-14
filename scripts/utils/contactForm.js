@@ -1,4 +1,6 @@
-
+function openForm(){
+  document.getElementById("formC").style.display = "block";
+}
 
 
 //DONNEES et VALIDATION FORMULAIRE
