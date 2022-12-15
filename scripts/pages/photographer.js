@@ -54,7 +54,7 @@ async function displayLightbox(media) {
     } else if (media.video) {
         medias = document.createElement('video');
         const source = document.createElement('source');
-        source.setAttribute("src", `assets/photos/${media.video}`);
+        medias.setAttribute("src", `assets/photos/${media.video}`);
         medias.appendChild(source);
         content.appendChild(medias);
     }
@@ -74,6 +74,7 @@ function displayModal(event) {
     const mediaID = parent.getAttribute('data-id');
     currentIndexMedia = mymedia.findIndex(m => m.id == mediaID);
     const mediaSelected = mymedia[currentIndexMedia];
+
     displayLightbox(mediaSelected);
 }
 
@@ -91,17 +92,42 @@ export async function init() {
 
    
     // NEXTMEDIA
+    let currentIndexMedia = 0;
+
     function nextMedia() {
+       if(currentIndexMedia < mymedia.length -1)
+       {
+
         currentIndexMedia += 1;
         displayLightbox(mymedia[currentIndexMedia]);
-
+       }
+       else
+       {
+        currentIndexMedia =0;
+       }
+          
     }
+  
     const lightbox = document.querySelector('dialog')
     const rightArrow = lightbox.querySelector('.fa-chevron-right')
     rightArrow.addEventListener('click', nextMedia);
     rightArrow.setAttribute("aria-label", "Next image")
 
-
+  //PREVMEDIA
+  function prevMedia() {
+    if(currentIndexMedia < mymedia.length -1)
+    {
+    currentIndexMedia = 0;
+    displayLightbox(mymedia[currentIndexMedia]);
+    }
+    else
+    {
+     currentIndexMedia = -1;
+    }
+}
+const leftArrow = lightbox.querySelector('.fa-chevron-left')
+leftArrow.addEventListener('click', prevMedia);
+leftArrow.setAttribute("aria-label", "Previous image")
 
 
     //CLOSEMODAL
@@ -112,14 +138,7 @@ export async function init() {
     closeButton.addEventListener('click', closeModal);
     closeButton.setAttribute("aria-label", "Close dialog")
 
-    //PREVMEDIA
-    function prevMedia() {
-        currentIndexMedia -= 1;
-        displayLightbox(mymedia[currentIndexMedia]);
-    }
-    const leftArrow = lightbox.querySelector('.fa-chevron-left')
-    leftArrow.addEventListener('click', prevMedia);
-    leftArrow.setAttribute("aria-label", "Previous image")
+  
 
     displayData(photographer);
     console.log(mymedia);
@@ -200,6 +219,12 @@ export function updateLikes(){
     //console.log(encartLikes)
 }
 
+function openForm(){
+
+    document.getElementById("formC").style.display = "block";
+}
+const buttonForm = document.getElementsByClassName("contact_button");
+//buttonForm.addEventListener('click', openForm);
 
 init();
 

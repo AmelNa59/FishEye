@@ -34,6 +34,7 @@ export function mediaFactory(data) {
       media = document.createElement('video');
       const source = document.createElement('source');
       source.setAttribute("src", mpp);
+      media.addEventListener('click', openModal);
       media.appendChild(source);
       media.setAttribute("id", "meddia");
     }
