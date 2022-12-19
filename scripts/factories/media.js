@@ -5,7 +5,7 @@ import { updateLikes} from "../pages/photographer.js";
 
 export function mediaFactory(data) {
 
-  const { photographerId, image, video, id } = data;
+  const { photographerId, image, video, id} = data;
 
 
   //GALERY
@@ -54,10 +54,13 @@ export function mediaFactory(data) {
 
     const f = document.createElement('footer');
 
+
+
     function IncremLikes() {
       numberLikes.textContent++;
 
     }
+
     const mediaLikes = document.createElement('div')
     mediaLikes.setAttribute("class","medialikes");
     const iconLikes = document.createElement('div');
@@ -65,42 +68,23 @@ export function mediaFactory(data) {
     iconLikes.addEventListener('click', IncremLikes, { once: true });
     iconLikes.setAttribute("aria-label","likes")
 
-
-    const numberLikes = document.createElement('div');
-    numberLikes.setAttribute("class", "numberL");
-    numberLikes.textContent = data.likes;
-
     const h3 = document.createElement('h3');
     h3.textContent = data.title;
     //const pr = document.createElement('div');
     //pr.textContent = data.price;
 
-    const enc = document.createElement("div");
-
-    enc.setAttribute("class", "encart")
-
-   
-
-    const pLIK = document.createElement('p');
-    pLIK.setAttribute("class","plikes");
+    const numberLikes = document.createElement('div');
+    numberLikes.setAttribute("class", "numberL");
+    numberLikes.textContent = data.likes;
    
     cont.appendChild(a);
    cont.appendChild(media);
-   
-
-    // gal.appendChild(media);
-
 
     cont.appendChild(f);
     f.appendChild(h3);
     f.appendChild(mediaLikes);
-
     mediaLikes.appendChild(numberLikes);
     mediaLikes.appendChild(iconLikes)
-
-   
-    cont.appendChild(enc);
-    enc.appendChild(pLIK); 
 
 
     return (cont);

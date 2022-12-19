@@ -55,12 +55,20 @@ async function displayLightbox(media) {
         medias = document.createElement('video');
         const source = document.createElement('source');
         medias.setAttribute("src", `assets/photos/${media.video}`);
+        medias.addEventListener('mouseover',()=>{
+        medias.play();})
+        medias.addEventListener('mouseout',()=>{
+            medias.pause();})
         medias.appendChild(source);
         content.appendChild(medias);
     }
+   
+  
     const h3 = document.createElement("h3");
     h3.textContent = media.title;
     content.appendChild(h3);
+
+   
 }
 
 /**
@@ -90,7 +98,10 @@ export async function init() {
         return (elmt.photographerId == id);
     })
 
-   
+    const nomPhotogInfo = document.querySelector('.modalInfo');
+    const namePhotoInfo= document.createElement('p');
+    namePhotoInfo.textContent=photographer.name;
+    nomPhotogInfo.appendChild(namePhotoInfo)
     // NEXTMEDIA
     let currentIndexMedia = 0;
 
@@ -113,17 +124,29 @@ export async function init() {
     rightArrow.addEventListener('click', nextMedia);
     rightArrow.setAttribute("aria-label", "Next image")
 
+    
+    document.addEventListener('keyup',()=>{
+        console.log('touche next')
+        nextMedia();
+     })
+
+
   //PREVMEDIA
   function prevMedia() {
-    if(currentIndexMedia < mymedia.length -1)
+  
+    if(currentIndexMedia== 0)
     {
-    currentIndexMedia = 0;
-    displayLightbox(mymedia[currentIndexMedia]);
+        currentIndexMedia = mymedia.length -1
+       displayLightbox(mymedia[currentIndexMedia]);
+  
     }
-    else
+    else 
     {
-     currentIndexMedia = -1;
+        currentIndexMedia -= 1;
+        displayLightbox(mymedia[currentIndexMedia]);
+  
     }
+       
 }
 const leftArrow = lightbox.querySelector('.fa-chevron-left')
 leftArrow.addEventListener('click', prevMedia);
@@ -138,13 +161,14 @@ leftArrow.setAttribute("aria-label", "Previous image")
     closeButton.addEventListener('click', closeModal);
     closeButton.setAttribute("aria-label", "Close dialog")
 
-  
+
 
     displayData(photographer);
     console.log(mymedia);
     displayMedia(mymedia);
 
     updateLikes();
+
 };
  //TRIAGE PAR DATE
 
@@ -209,22 +233,37 @@ leftArrow.setAttribute("aria-label", "Previous image")
 
 export function updateLikes(){
     let nbLikes = 0;
-    mymedia.forEach(media => nbLikes += media.likes
+    mymedia.forEach(media =>nbLikes += media.likes
     );
     console.log(nbLikes);
 
-// encartLikes.innerText=`nombre de likes ${nbLikes}`;
-//encartLikes.innerHTML="";
-//encartLikes.appendChild(pLIK);
-    //console.log(encartLikes)
-}
+    const encartLikes = document.querySelector(".encart");
+encartLikes.innerHTML="";
+const contentLikes=document.createElement('p');
+contentLikes.textContent = `${nbLikes}`;
+encartLikes.appendChild(contentLikes);
 
-function openForm(){
+    }
 
-    document.getElementById("formC").style.display = "block";
-}
-const buttonForm = document.getElementsByClassName("contact_button");
-//buttonForm.addEventListener('click', openForm);
+    const form = document.getElementById('bg-modal');
+  function openForm(){
+
+  form.style.display = 'block'
+  }
+
+  function closeForm(){
+
+    form.style.display = 'none'
+    }
+
+const btnOpenForm = document.getElementById('openButtonForm');
+btnOpenForm.addEventListener('click',openForm);
+
+const closeFormByButton = document.querySelector(".closeFormModal");
+closeFormByButton.addEventListener('click',closeForm);
+
+/*const closeFormBySubmit = document.querySelector("#send");
+closeFormBySubmit.addEventListener('click',closeForm);*/
 
 init();
 

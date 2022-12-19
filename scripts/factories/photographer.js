@@ -12,11 +12,14 @@ export function photographerFactory(data) {
         a.setAttribute("href", "photographer.html" + "?id=" + id);
 
         const article = document.createElement('article');
-        const img = document.createElement('img');
-        img.setAttribute("src", picture)
-
+        
         const h2 = document.createElement('h2');
         h2.textContent = name;
+        const img = document.createElement('img');
+        img.setAttribute("src", picture)
+        img.setAttribute("alt", name)
+
+
 
         const c = document.createElement('c');
         c.textContent = data.city;
@@ -28,15 +31,19 @@ export function photographerFactory(data) {
         priceDay.setAttribute("id", "priceDay");
         priceDay.textContent = data.price + '€/jour';
 
-        const encartt = document.getElementsByClassName("encart");
+    
 
         a.appendChild(article);
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(count);
         article.appendChild(tag);
-        article.appendChild(priceDay);   //permet d'afficher
+        article.appendChild(priceDay); 
+          //permet d'afficher
+      
 
+      
+     
 
         return (a);
     }
@@ -44,35 +51,45 @@ export function photographerFactory(data) {
 
     function getPhotographerCardDOM() {
         const p = document.querySelector(".photograph-header");
-        const i = document.createElement('info');
-        const cont = document.createElement('contact');
+        const containerP =document.createElement('div');
+        containerP.classList.add('containerP')
+        const i = document.createElement('div');
+        i.classList.add('infoP')
+        const cont = document.createElement('div');
+        cont.classList.add('contact')
 
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", "");
 
         const h2 = document.createElement('h2');
         h2.textContent = name;
-        const c = document.createElement('c');
+        const c = document.createElement('p');
+     
         c.textContent = data.city;
-        const count = document.createElement('count');
+        const count = document.createElement('p');
+        count.classList.add('localisation')
         count.textContent = data.city + ' , ' + data.country;
-        const tag = document.createElement('tag');
+        const tag = document.createElement('p');
+        tag.classList.add('citation')
         tag.textContent = data.tagline;
 
         const butt = document.querySelector("button");
-
-        p.appendChild(i);
-        p.appendChild(cont);
+        p.appendChild(containerP)
+        
+        containerP.appendChild(i);
+        containerP.appendChild(cont);
+        
         cont.appendChild(butt);
         i.appendChild(h2);
         i.appendChild(count);
         i.appendChild(tag);
-        p.appendChild(img);
+        containerP.appendChild(img);
 
 
 
-        return (p);
+        return (containerP);
 
     }
     return { name, picture, getUserCardDOM, getPhotographerCardDOM }
