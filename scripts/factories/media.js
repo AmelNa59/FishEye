@@ -36,6 +36,7 @@ export function mediaFactory(data) {
       source.setAttribute("src", mpp);
       media.addEventListener('click', openModal);
       media.appendChild(source);
+      media.toggleAttribute('controls')
       media.setAttribute("id", "meddia");
     }
     //DOM
@@ -53,29 +54,32 @@ export function mediaFactory(data) {
 
 
     const f = document.createElement('footer');
-
-
-
-    function IncremLikes() {
-      numberLikes.textContent++;
+ 
+ function IncremLikes() {
+ numberLikes.textContent ++;
 
     }
-
     const mediaLikes = document.createElement('div')
     mediaLikes.setAttribute("class","medialikes");
     const iconLikes = document.createElement('div');
     iconLikes.classList.add("fas", "fa-heart");
-    iconLikes.addEventListener('click', IncremLikes, { once: true });
+    iconLikes.addEventListener('click',IncremLikes, { once: true });
     iconLikes.setAttribute("aria-label","likes")
 
     const h3 = document.createElement('h3');
     h3.textContent = data.title;
     //const pr = document.createElement('div');
     //pr.textContent = data.price;
-
+    let nbtotal;
+  iconLikes.addEventListener('click',()=>{
+ nbtotal = document.querySelector('.nbTotalLikes')
+ nbtotal=nbtotal.textContent++;
+    })
     const numberLikes = document.createElement('div');
     numberLikes.setAttribute("class", "numberL");
     numberLikes.textContent = data.likes;
+
+
    
     cont.appendChild(a);
    cont.appendChild(media);

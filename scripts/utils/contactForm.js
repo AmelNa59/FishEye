@@ -10,6 +10,7 @@ const formulaire = document.getElementById("form");
 
 
 formulaire.addEventListener('submit',function(event){
+  event.preventDefault();
 
   var first = document.getElementById('prenom').value;
 

@@ -55,6 +55,7 @@ async function displayLightbox(media) {
         medias = document.createElement('video');
         const source = document.createElement('source');
         medias.setAttribute("src", `assets/photos/${media.video}`);
+        medias.toggleAttribute('controls')
         medias.addEventListener('mouseover',()=>{
         medias.play();})
         medias.addEventListener('mouseout',()=>{
@@ -93,11 +94,21 @@ export async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
     const photographer = photographers.find(p => p.id == id);
+
+     
+ const encartLikes = document.querySelector(".encart");
+ encartLikes.innerHTML="";
     
     const nomPhotogInfo = document.querySelector('.modalInfo');
     const namePhotoInfo= document.createElement('p');
     namePhotoInfo.textContent=photographer.name;
+    namePhotoInfo.setAttribute("class","namePhotoInfo")
     nomPhotogInfo.appendChild(namePhotoInfo)
+
+    const contentPrice=document.createElement('p');
+contentPrice.textContent =photographer.price +'€/jour';
+contentPrice.setAttribute("class","pricePerDay")
+encartLikes.appendChild(contentPrice)
     //recupere tous les médias d'un photographe depuis son Id
     mymedia = media.filter(function (elmt) {
         return (elmt.photographerId == id);
@@ -125,11 +136,22 @@ export async function init() {
     rightArrow.addEventListener('click', nextMedia);
     rightArrow.setAttribute("aria-label", "Next image")
 
-    
-    document.addEventListener('keyup',()=>{
-        console.log('touche next')
-        nextMedia();
-     })
+
+     document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+        prevMedia()
+    }
+    else if (e.keyCode == '39') {
+       //right arrow
+       nextMedia()
+    }
+
+}
 
 
   //PREVMEDIA
@@ -232,18 +254,25 @@ leftArrow.setAttribute("aria-label", "Previous image")
  const sortLikes = document.getElementById('filter_pop');
  sortLikes.addEventListener('click', updateValueLikes);
 
+
 export function updateLikes(){
     let nbLikes = 0;
-    mymedia.forEach(media =>nbLikes += media.likes
-    );
-    console.log(nbLikes);
+    mymedia.forEach(media =>nbLikes += media.likes);
 
-    const encartLikes = document.querySelector(".encart");
-encartLikes.innerHTML="";
+const encartLikes = document.querySelector(".encart");
+const divLikes = document.createElement("div");
+divLikes.setAttribute('class','divLikes')
+encartLikes.appendChild(divLikes);
+
+
 const contentLikes=document.createElement('p');
+contentLikes.setAttribute("class","nbTotalLikes")
 contentLikes.textContent = `${nbLikes}`;
-encartLikes.appendChild(contentLikes);
 
+const iconLikes = document.createElement('div');
+    iconLikes.classList.add("fas", "fa-heart");
+    divLikes.appendChild(contentLikes);
+    divLikes.appendChild(iconLikes)
     }
 
     const form = document.getElementById('bg-modal');
