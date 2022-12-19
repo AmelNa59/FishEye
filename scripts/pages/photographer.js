@@ -93,15 +93,16 @@ export async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
     const photographer = photographers.find(p => p.id == id);
+    
+    const nomPhotogInfo = document.querySelector('.modalInfo');
+    const namePhotoInfo= document.createElement('p');
+    namePhotoInfo.textContent=photographer.name;
+    nomPhotogInfo.appendChild(namePhotoInfo)
     //recupere tous les médias d'un photographe depuis son Id
     mymedia = media.filter(function (elmt) {
         return (elmt.photographerId == id);
     })
 
-    const nomPhotogInfo = document.querySelector('.modalInfo');
-    const namePhotoInfo= document.createElement('p');
-    namePhotoInfo.textContent=photographer.name;
-    nomPhotogInfo.appendChild(namePhotoInfo)
     // NEXTMEDIA
     let currentIndexMedia = 0;
 
@@ -262,8 +263,8 @@ btnOpenForm.addEventListener('click',openForm);
 const closeFormByButton = document.querySelector(".closeFormModal");
 closeFormByButton.addEventListener('click',closeForm);
 
-/*const closeFormBySubmit = document.querySelector("#send");
-closeFormBySubmit.addEventListener('click',closeForm);*/
+const closeFormBySubmit = document.querySelector("#send");
+closeFormBySubmit.addEventListener('click',closeForm);
 
 init();
 
