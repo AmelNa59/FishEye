@@ -48,7 +48,7 @@ async function displayLightbox(media) {
     } else if (media.video) {
         medias = document.createElement('video');
         const source = document.createElement('source');
-        medias.setAttribute("src", `assets/photos/${media.video}`);
+        medias.setAttribute("src", `assets/videos/${media.video}`);
         medias.toggleAttribute('controls')
         medias.addEventListener('mouseover', () => {
             medias.play();

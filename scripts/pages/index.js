@@ -15,6 +15,7 @@ async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographers();
     displayData(photographers);
+
 };
 
 init();

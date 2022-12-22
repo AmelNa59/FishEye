@@ -3,17 +3,20 @@ import { openModal } from "../utils/modalPhoto.js";
 
 export function mediaFactory(data) {
 
-  const { photographerId, image, video, id,alt} = data;
+  const { photographerId, image, video, id, alt} = data;
   const picture = `assets/photos/${image}`;
-  const mpp = `assets/photos/${video}`;
+  const mpp = `assets/videos/${video}`;
 
   //Création des cards Média
   function getMediaCardDOM() {
-
     const a = document.createElement('a');
     a.setAttribute("class", "dbox", "photographer.html" + "?id=" + photographerId);
     a.setAttribute("src", picture);
+    a.setAttribute("src", mpp);
+    
+
     let media;
+    
 
     //Créations des images pour la galerie
     if (data.image) {
@@ -30,6 +33,7 @@ export function mediaFactory(data) {
       media = document.createElement('video');
       const source = document.createElement('source');
       source.setAttribute("src", mpp);
+      media.setAttribute("src", mpp);
       media.addEventListener('click', openModal);
       media.appendChild(source);
       media.setAttribute("alt", alt);
