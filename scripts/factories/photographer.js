@@ -1,29 +1,25 @@
 export function photographerFactory(data) {
 
-    //appeler la fonction display data
-
     const { name, portrait, id } = data;
-
     const picture = `assets/photographers/${portrait}`;
 
+    //Ajout des datas nécessaires d'un Photographe
+    function getUserCardDOM() {
 
-    function getUserCardDOM() {// on ajoute les datas que l'on veut
         const a = document.createElement('a');
         a.setAttribute("href", "photographer.html" + "?id=" + id);
 
         const article = document.createElement('article');
         
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
         const img = document.createElement('img');
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", name)
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", name);
 
-
-
-        const c = document.createElement('c');
+        const c = document.createElement('h2');
         c.textContent = data.city;
-        const count = document.createElement('count');
+        const count = document.createElement('h3');
         count.textContent = data.city + ' , ' + data.country;
         const tag = document.createElement('tag');
         tag.textContent = data.tagline;
@@ -31,25 +27,21 @@ export function photographerFactory(data) {
         priceDay.setAttribute("id", "priceDay");
         priceDay.textContent = data.price + '€/jour';
 
-    
+    //Implémentation des élèments dans le DOM
 
         a.appendChild(article);
         article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(h1);
         article.appendChild(count);
         article.appendChild(tag);
         article.appendChild(priceDay); 
-          //permet d'afficher
-      
-
-      
-     
 
         return (a);
     }
 
 
     function getPhotographerCardDOM() {
+
         const p = document.querySelector(".photograph-header");
         const containerP =document.createElement('div');
         containerP.classList.add('containerP')
@@ -63,31 +55,32 @@ export function photographerFactory(data) {
         img.setAttribute("src", picture);
         img.setAttribute("alt", "");
 
-        const h2 = document.createElement('h2');
+        const h2 = document.createElement('h1');
         h2.textContent = name;
-        const c = document.createElement('p');
-     
+        const c = document.createElement('h2');
         c.textContent = data.city;
-        const count = document.createElement('p');
+        const count = document.createElement('h2');
         count.classList.add('localisation')
         count.textContent = data.city + ' , ' + data.country;
-        const tag = document.createElement('p');
+        const tag = document.createElement('h3');
         tag.classList.add('citation')
         tag.textContent = data.tagline;
 
         const butt = document.querySelector("button");
+        
+    //Implémentation des élèments dans le DOM
+
         p.appendChild(containerP)
         
         containerP.appendChild(i);
         containerP.appendChild(cont);
+        containerP.appendChild(img);
         
         cont.appendChild(butt);
         i.appendChild(h2);
         i.appendChild(count);
         i.appendChild(tag);
-        containerP.appendChild(img);
-
-
+      
 
         return (containerP);
 

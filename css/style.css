@@ -1,8 +1,11 @@
 @import url("photographer.css");
 
+/* Global values */
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+
 }
 
 main {
@@ -13,6 +16,8 @@ main {
 
 }
 
+/** HEADER INDEX**/
+
 header {
     display: flex;
     justify-content: space-between;
@@ -20,23 +25,32 @@ header {
     height: 10px;
     padding: 40px 0 20px;
 }
+header h1{
+    margin-right:150px;
 
+}
+.photographer_section article h3{
+    font-size:16px;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+    color: #d3573c;
+   /* margin-right: 100px;*/
     font-weight: normal;
+    margin-bottom:10px;
 }
 
 .logo {
     height: 50px;
     width: 150px;
-    margin-left: 60px;
-
-    padding: 60px;
+    margin-left: 150px;
     object-fit: contain;
 
 }
-
+.citation{
+    color:#525252;
+}
 #logoPhoto{
     height: 50px;
     width: 150px;
@@ -48,10 +62,9 @@ h1 {
     display: flex;
     flex-flow: wrap row;
     width:100%;
-    justify-content: 100%;
     align-items:center;
 }
-
+/** SECTION PHOTOGRAPHE INDEX**/
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -66,7 +79,14 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
-
+.photograph-header .containerP img {
+    align-self:center;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px 0px #00000040;
+    margin-right:50px;
+}
 .photographer_section a {
     text-decoration: none;
 }
@@ -97,10 +117,9 @@ h1 {
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 13px;
-    /* identical to box height */
-
+    padding-top: 0;
     text-align: center;
 
     color: #000000;
@@ -144,7 +163,7 @@ h1 {
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 9px;
+    font-size: 11px;
     line-height: 12px;
     text-align: center;
     color: #757575;
@@ -210,6 +229,11 @@ count {
 .item-2 {
     background-color: green;
     display: none;
+}
+
+.contact{
+    margin-top: 30px;
+
 }
 
 .img {
@@ -306,17 +330,7 @@ input[data-error]:invalid {
 }
 
 /*LIGHTBOX*/
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    background-color: rgba(0, 0, 0.9);
-    z-index: 10;
-    display: flex;
 
-}
 
 #closeLightbox {
     background-color: transparent;
@@ -324,8 +338,8 @@ input[data-error]:invalid {
     color: rgb(144, 28, 28);
     position: absolute;
     margin: auto;
-    top: 0;
-    right: 10px;
+    top: 15px;
+    right: 70px;
     height: 40px;
     width: 20px;
 
@@ -338,7 +352,7 @@ input[data-error]:invalid {
     position: absolute;
     margin: auto;
     top: 45%;
-    left: 15px;
+    left: 20px;
 
 }
 
@@ -349,7 +363,7 @@ input[data-error]:invalid {
     position: absolute;
     margin: auto;
     top: 45%;
-    left: 92%;
+    left: 94%;
 
 }
 
@@ -371,7 +385,7 @@ video {
     text-align: center;
     margin: auto;
     display: flex;
-    margin-left:0;
+    /*margin-left:0;*/
 
 }
 
@@ -379,8 +393,8 @@ video {
     margin: auto;
     flex-direction: row;
     gap: 30px;
-    width: 500px;
-    max-height: 350px;
+    width: 650px;
+    max-height: 430px;
     justify-content: center;
 
 }
@@ -448,7 +462,7 @@ video {
 .encart {
     display:flex;
     flex-direction: row-reverse;
-    height: 30px;
+    height: 50px;
     width: 220px;
     border-radius: 10px 10px 0 0;
     background-color: rgb(219, 136, 118);
@@ -468,6 +482,7 @@ video {
     position: relative;
     border-radius: 3px;
     box-shadow:0px 4px 12px 0px #00000040;
+    padding-bottom:25px;
 }
 
 .bgg-modal {
@@ -487,7 +502,7 @@ video {
 border: none;
 font-weight: 500;
 align-self: last baseline;
-margin-bottom: 10px;
+
 }
 
 #form h2 {
@@ -565,22 +580,152 @@ margin-bottom: 10px;
     height: 20px;
     width: 20px;
     margin-right: 20px;
+    margin-bottom:10px;
+
 }
 
 .divLikes .nbTotalLikes{
     align-self:center;
-    margin-right:70px;
+    font-weight:bold;
+    font-family:"DM","sans-serif";
+    font-size:18px;
+
 }
 .pricePerDay{
     align-self:center;
+    font-family:"DM","sans-serif";
+    font-weight: bold;
+    padding-right:15px;
+    font-size:18px;
 }
 
 .divLikes .fas.fa-heart{
     color:black;
     align-self:center;
+    margin-right:40px;
+    font-size:1em;
+
 }
 
 .divLikes{
     display:flex;
     flex-direction: row;
+}
+
+/** MEDIAQUERIES**/
+@media only screen and (max-width: 320px) {
+    main{
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1025px) {
+    .photograph-header .containerP img {
+        
+        height: 200px;
+        width: 200px;
+        margin-bottom:60px;
+    
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+
+    .photograph-header .containerP img{
+        width: 200px;
+        height: 200px;
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 965px) {
+    .photograph-header{
+        height:400px;
+    }
+    .contact{
+        margin-left:150px;
+ 
+    }
+    .photograph-header .containerP img{
+        width: 180px;
+        height: 180px;
+        margin-right:100px;
+ 
+    }
+    #openButtonForm{
+        margin-bottom:0;
+    }
+    .photograph-header .containerP img{
+        margin-bottom:50px;
+        margin:0 auto;
+        margin-bottom:15px;
+    }
+
+    .infoP{
+        padding-bottom:0;
+    }
+
+}
+
+@media screen and (max-width: 895px) {
+    .contact{
+        margin-left:10px;
+    }
+}
+
+@media screen and (max-width: 809px) {
+    .photograph-media footer h3 {
+      width:100%;
+        margin-left: 60px;
+      }
+}
+@media screen and (max-width: 635px) and (min-width:320px) {
+    .photograph-header .containerP img{
+        width: 130px;
+        height: 130px;
+        margin-bottom: 60px;
+    }
+    
+    .medialikes{
+        padding-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 550px) and (min-width:320px) {
+    main{
+        padding:0;
+    }
+    .photograph-header{
+        width: 330px;
+        height:300px;
+        padding:20px;
+    }
+    .photograph-header .containerP .infoP{
+        padding-left:0;
+        padding-top:0;
+    }
+
+    .photograph-header .containerP .infoP h1{
+        font-size:25px;
+    }
+    .photograph-media footer h3{
+        margin-left: 0;
+    }
+
+    .medialikes{
+        margin-right:15px;
+    }
+    .photograph-header .containerP{
+        width:330px;
+    }
+    .photograph-header .containerP img{
+        width: 130px;
+        height: 130px;
+        margin-bottom: 60px;
+    }
+    #openButtonForm{
+        width:180px;
+    }
 }

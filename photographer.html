@@ -1,67 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-
   <script src="/scripts/pages/photographer.js" type="module"></script>
   <script src="/scripts/utils/contactForm.js" type="module"></script>
   <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"> 
 
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
   <header>
-    <a  href="./index.html" alt="Fisheye Home page"><img  alt="Fisheye Home page" src="assets/images/logo.png" class="logo"></a>
+    <a href="./index.html"><img alt="Fisheye Home page" src="assets/images/logo.png" class="logo"></a>
   </header>
+
   <main id="main">
 
     <div class="photograph-header">
-      <button class="contact_button" id="openButtonForm"  aria-label="contact-me">Contactez-moi</button>
-
+      <button class="contact_button" id="openButtonForm" aria-label="contact-me">Contactez-moi</button>
     </div>
-    <div class="bgg-modal" style="display:none" id="bg-modal" aria-hidden="true" role="dialog" aria-describedby="modalForm">
-        <form method="get" id="form" type="hidden">
-          <div class="modalInfo">
-            <div class="Contact-close">
-              <h2 class="nomP">Contactez-moi<br></h2>
-              <button class="closeFormModal"><img src="assets/icons/close.svg" id="img2" aria-label="Close Contact Form" /></button>
-            </div>  
+
+    <div class="bgg-modal" style="display:none" id="bg-modal" aria-hidden="true" role="dialog">
+      <form method="get" id="form">
+        <div class="modalInfo">
+          <div class="Contact-close">
+            <h2 class="nomP">Contactez-moi<br></h2>
+            <button class="closeFormModal"><img src="assets/icons/close.svg" id="img2" alt="Close Contact Form"
+                aria-label="Close Contact Form">
+            </button>
           </div>
+        </div>
 
-          <div class="label">
-        
-              <label for="prenom" >Prénom</label>
-              <input type="text" id="prenom"  required
-              minlength="4" maxlength="8" size="10">
+        <!--MODALE FORMULAIRE-->
+        <div class="label">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" required minlength="4" maxlength="8" size="10">
 
-              <label for="nom">Nom</label>
-              <input type="text" id="nom"  required
-              minlength="4" maxlength="8" size="10">
-       
-              <label for="email">Email </label>
-              <input type="email" name="email" id="email" required aria-label="Email (lablled by 7)">
-       
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" required minlength="4" maxlength="8" size="10">
 
-              <label for="msg" aria-label="Your message(labbled by 9">Votre message</label>
-              <textarea id="msg" name="user_message"></textarea>
-     
-            <button class="contact_button" type="submit" id="send" value="send" aria-label="Send">Envoyer</button>
-          </div>
-        </form>
+          <label for="email">Email </label>
+          <input type="email" name="email" id="email" required aria-label="Email (lablled by 7)">
+
+
+          <label for="msg" aria-label="Your message(labbled by 9">Votre message</label>
+          <textarea id="msg" name="user_message"></textarea>
+
+          <button class="contact_button" type="submit" id="send" value="send" aria-label="Send">Envoyer</button>
+        </div>
+      </form>
     </div>
 
     <script src="/scripts/utils/contactForm.js"></script>
-    <!--TRIER-->
+    <!--TRI DES MEDIAS-->
 
-    <label for="galery-select" id="filter_container">Trier par</label>
-    <select name="medias" class="photographer_elements" id="selectOptions"aria-label="Ordered by(labbled by 8)" >
-
-      <option  value="" id="filter_pop" selected>Popularité</option>
+    <label for="selectOptions" id="filter_container">Trier par</label>
+    <select name="medias" class="photographer_elements" id="selectOptions" aria-label="Ordered by(labbled by 8)">
+      <option value="" id="filter_pop" selected>Popularité</option>
       <option value="date" id="filter_date">Date</option>
       <option value="title" id="filter_titre">Titre</option>
     </select>
@@ -69,33 +68,27 @@
     <!-- The Modal/Lightbox -->
     <dialog id="lightbox" class="light" aria-label="image-closeup-view">
 
-      <div class="dialog-content" aria-label="image-closeup-view">
+      <div class="dialog-content">
       </div>
-
       <button id="prev" aria-label="Previous image">
-        <i class="fas fa-chevron-left fa-2x"></i>
+        <strong class="fas fa-chevron-left fa-2x"></strong>
       </button>
-
       <button id="next" aria-label="Next image">
-        <i class="fas fa-chevron-right fa-2x"></i>
+        <strong class="fas fa-chevron-right fa-2x"></strong>
       </button>
-
 
       <button id="closeLightbox" aria-label="close modal">
-        <i class="fas fa-times fa-2x"></i>
+        <strong class="fas fa-times fa-2x"></strong>
       </button>
     </dialog>
+    
+    <!--GALERIE MEDIAS-->
     <div class="photograph-media"></div>
 
+    <!--ENCART-->
     <div class="encart"></div>
-    <!-- TODO  Ici le HTML ne voit pas la fonction nextMedia car cette fonction est défini dans un module -->
-    <!-- Il faut donc que tu fasses le lien en JS dans ton code et non pas ici en HTML -->
-
-
-
   </main>
   <script src="/scripts/pages/photographer.js" type="module"></script>
-
 </body>
 
 </html>

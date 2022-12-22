@@ -1,13 +1,7 @@
 
 const formulaire = document.getElementById("form");
-  function masquerformulaire() {
 
-    formulaire.style.display = 'none';
-  
-  }
 //DONNEES et VALIDATION FORMULAIRE
-
-
 
 formulaire.addEventListener('submit',function(event){
   event.preventDefault();
