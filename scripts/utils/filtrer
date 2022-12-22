@@ -1,0 +1,19 @@
+// Définition des constantes
+const filterDate = document.getElementById("filter_date");
+const filterTitre = document.getElementById("filter_titre");
+
+
+// Fonction pour afficher tous les filtres
+function displayFilters() {
+    filterDate.style.display = "block";
+    filterTitre.style.display = "block";
+
+}
+
+// Fonction qui va refermer les filtres
+function hideFilters() {
+    filterDate.style.display = "none";
+    filterTitre.style.display = "none";
+
+}
+
