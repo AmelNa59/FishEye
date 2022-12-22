@@ -1,6 +1,6 @@
 export function photographerFactory(data) {
 
-    const { name, portrait, id } = data;
+    const { name, portrait, id, alt} = data;
     const picture = `assets/photographers/${portrait}`;
 
     //Ajout des datas nécessaires d'un Photographe
@@ -11,13 +11,13 @@ export function photographerFactory(data) {
 
         const article = document.createElement('article');
         
-        const h1 = document.createElement('h1');
-        h1.textContent = name;
+        const h2 = document.createElement('h2');
+        h2.textContent = name;
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
+        img.setAttribute("alt", alt);
 
-        const c = document.createElement('h2');
+        const c = document.createElement('h3');
         c.textContent = data.city;
         const count = document.createElement('h3');
         count.textContent = data.city + ' , ' + data.country;
@@ -31,7 +31,7 @@ export function photographerFactory(data) {
 
         a.appendChild(article);
         article.appendChild(img);
-        article.appendChild(h1);
+        article.appendChild(h2);
         article.appendChild(count);
         article.appendChild(tag);
         article.appendChild(priceDay); 
@@ -53,7 +53,7 @@ export function photographerFactory(data) {
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "");
+        img.setAttribute("alt", alt);
 
         const h2 = document.createElement('h1');
         h2.textContent = name;

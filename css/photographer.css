@@ -20,6 +20,13 @@
     margin-bottom: 20px;
 }
 
+h1{
+    margin-right:150px;
+    color:#D3573C;
+    font-weight: 400;
+
+}
+
 /** MEDIAQUERIES**/
 
 /* Extra small devices (phones, 600px and down) */
@@ -424,7 +431,7 @@
 
 .medialikes{
     display: flex;
-    padding-right:35px;
+    padding-right:40px;
 
 }
 .numberL{
@@ -439,7 +446,7 @@
 
 h3{
     font-family:'DM Sans';
-    font-size: 14px;
+    font-size: 16px;
     justify-content: flex-start;
     letter-spacing: 0em;
     text-align: left;
@@ -461,7 +468,7 @@ h3{
     font-weight: 300;
     margin:0 ;
     width:100%;
-    padding-left:40px;
+    padding-left:45px;
   }
 
   /* The Modal (background) */
