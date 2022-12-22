@@ -41,14 +41,14 @@ async function displayLightbox(media) {
     let medias;
     if (media.image) {
         medias = document.createElement("img");
-        medias.setAttribute("src", `assets/photos/${media.image}`);
+        medias.setAttribute("src", `assets/mediaPhoto/${media.image}`);
         medias.setAttribute("aria-label", "")
         content.appendChild(medias);
 
     } else if (media.video) {
         medias = document.createElement('video');
         const source = document.createElement('source');
-        medias.setAttribute("src", `assets/videos/${media.video}`);
+        medias.setAttribute("src", `assets/mediaPhoto/${media.video}`);
         medias.toggleAttribute('controls')
         medias.addEventListener('mouseover', () => {
             medias.play();

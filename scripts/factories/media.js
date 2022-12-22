@@ -4,8 +4,8 @@ import { openModal } from "../utils/modalPhoto.js";
 export function mediaFactory(data) {
 
   const { photographerId, image, video, id, alt} = data;
-  const picture = `assets/photos/${image}`;
-  const mpp = `assets/videos/${video}`;
+  const picture = `assets/mediaPhoto/${image}`;
+  const mpp = `assets/mediaPhoto/${video}`;
 
   //Création des cards Média
   function getMediaCardDOM() {
