@@ -23,6 +23,8 @@ async function displayMedia(gallery) {
         const mediaModel = mediaFactory(media);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaCardDOM.addEventListener("click", displayModal);
+        mediaCardDOM.addEventListener('keypress', displayModal);
+  
         mediaSection.appendChild(mediaCardDOM);
     })
 }
@@ -83,7 +85,7 @@ let currentIndexMedia;
 export async function init() {
 
     // Récupère les datas des photographes
-    const { photographers, media,name } = await getPhotographers();
+    const { photographers, media, name } = await getPhotographers();
     const photographer = photographers.find(p => p.id == id);
     const nomPhotogInfo = document.querySelector('.modalInfo');
     const namePhotoInfo = document.createElement('p');
@@ -107,9 +109,9 @@ export async function init() {
     })
 
     //  Infos Lightbox
-        
+
     let currentIndexMedia = 0;
-        //Next média
+    //Next média
     function nextMedia() {
         if (currentIndexMedia < mymedia.length - 1) {
             currentIndexMedia += 1;
@@ -119,13 +121,13 @@ export async function init() {
             currentIndexMedia = 0;
         }
     }
-        
+
     const lightbox = document.querySelector('dialog')
     const rightArrow = lightbox.querySelector('.fa-chevron-right')
     rightArrow.addEventListener('click', nextMedia);
     rightArrow.setAttribute("aria-label", "Next image")
 
-        //Previous média
+    //Previous média
     function prevMedia() {
         if (currentIndexMedia == 0) {
             currentIndexMedia = mymedia.length - 1
@@ -175,9 +177,27 @@ export async function init() {
 };
 
 //Tri des médias (SELECT)
+const selectElement = document.querySelector('#selectOptions');
 
-    //Tri par Date
-const sortDate = document.getElementById("filter_date");
+selectElement.addEventListener('change', (event) => {
+    switch (selectElement.value) {
+        case "pop":
+        //do somthing with  , "add" value
+       updateValueLikes();
+          break;  // then take break
+        case "date":
+        //do somthing with  , "remove" value
+        updateValueDate();
+          break; // then take break
+          case "title":
+            //do somthing with  , "remove" value
+            updateValueTitle();
+              break; // then take break
+      }
+});
+
+//Tri par Date
+
 
 function updateValueDate() {
 
@@ -190,12 +210,11 @@ function updateValueDate() {
         return 0;
     })
     displayMedia(mymedia);
+    console.log(mymedia)
 }
-sortDate.addEventListener('click', updateValueDate);
 
-    //Tri par titre
 
-const sortTitle = document.getElementById('filter_titre');
+//Tri par titre
 
 function updateValueTitle() {
     document.querySelector(".photograph-media").innerHTML = "";
@@ -207,10 +226,10 @@ function updateValueTitle() {
         return 0;
     });
     displayMedia(mymedia);
+    console.log('cest ok');
 }
-sortTitle.addEventListener("click", updateValueTitle);
 
-    //Tri par Popularité
+//Tri par Popularité
 
 function updateValueLikes() {
 
@@ -225,8 +244,6 @@ function updateValueLikes() {
     });
     displayMedia(mymedia);
 }
-const sortLikes = document.getElementById('filter_pop');
-sortLikes.addEventListener('click', updateValueLikes);
 
 //Affiche le nombre de likes dans l'encart
 export function updateLikes() {
@@ -249,15 +266,15 @@ export function updateLikes() {
     divLikes.appendChild(iconLikes)
 
     //Accessibilité:Touché Enter pour choisir le tri
-const selectEnter = document.querySelector('.photographer_elements');
-selectEnter.addEventListener('keypress', updateValueLikes);
+    const selectEnter = document.querySelector('.photographer_elements');
+    selectEnter.addEventListener('keypress', updateValueLikes);
 }
 
 //MODALE Formulaire
 const form = document.getElementById('bg-modal');
 
 function openForm() {
-    
+
     form.style.display = 'block'
 }
 

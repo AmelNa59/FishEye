@@ -9,7 +9,7 @@
 
   <script src="./scripts/utils/contactForm.js" type="module"></script>
   <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 
   <title>Fisheye - photographe </title>
 </head>
@@ -41,13 +41,13 @@
         <!--MODALE FORMULAIRE-->
         <div class="label">
           <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" required minlength="4" maxlength="8" size="10">
+          <input type="text" id="prenom" required minlength="4" maxlength="8" size="10" autofocus>
 
           <label for="nom">Nom</label>
-          <input type="text" id="nom" required minlength="4" maxlength="8" size="10">
+          <input type="text" id="nom" required minlength="4" maxlength="8" size="10" autofocus>
 
           <label for="email">Email </label>
-          <input type="email" name="email" id="email" required aria-label="Email (lablled by 7)">
+          <input type="email" name="email" id="email" required aria-label="Email (lablled by 7)" autofocus>
 
 
           <label for="msg" aria-label="Your message(labbled by 9">Votre message</label>
@@ -63,7 +63,7 @@
 
     <label for="selectOptions" id="filter_container">Trier par</label>
     <select name="medias" class="photographer_elements" id="selectOptions" aria-label="Ordered by(labbled by 8)">
-      <option value="" id="filter_pop" selected>Popularité</option>
+      <option value="pop" id="filter_pop" selected>Popularité</option>
       <option value="date" id="filter_date">Date</option>
       <option value="title" id="filter_titre">Titre</option>
     </select>
@@ -84,14 +84,14 @@
         <strong class="fas fa-times fa-2x"></strong>
       </button>
     </dialog>
-    
+
     <!--GALERIE MEDIAS-->
     <div class="photograph-media"></div>
 
     <!--ENCART-->
     <div class="encart"></div>
   </main>
-  <script src="./scripts/utils/contactForm.js" type="module"></script>  
+  <script src="./scripts/utils/contactForm.js" type="module"></script>
 
   <script src="./scripts/pages/photographer.js" type="module"></script>
 </body>

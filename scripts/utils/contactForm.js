@@ -6,15 +6,15 @@ const formulaire = document.getElementById("form");
 formulaire.addEventListener('submit',function(event){
   event.preventDefault();
 
-  var first = document.getElementById('prenom').value;
+  const first = document.getElementById('prenom').value;
 
 
-  var last = document.getElementById('nom').value;
+  const last = document.getElementById('nom').value;
  
-  var email = document.getElementById('email').value;
+  const email = document.getElementById('email').value;
 
 
-  var message = document.getElementById('msg').value;
+  const message = document.getElementById('msg').value;
 
    console.log(first,last, email, message);
 
